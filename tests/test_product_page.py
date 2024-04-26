@@ -1,10 +1,13 @@
 from selene import browser, be, have
-from pages.locators import SalePageLocators, BaseLocators
+from ..pages.locators import ProductLocators as PL
+from ..pages.product_page import ProductPage
 
 
 def test_add_to_cart():
-    browser.open('https://magento.softwaretestingboard.com/sale.html')
-    browser.element(SalePageLocators.GEAR_DEALS_TITLE).should(be.visible)
+    page = ProductPage(browser, PL.RADIANT_TEE_URL)
+    page.open()
+    page.add_to_cart()
+
 
 
 
