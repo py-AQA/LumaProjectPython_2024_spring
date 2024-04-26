@@ -1,5 +1,5 @@
 from selene import browser, be, have
-from pages.locators import SalePageLocators, BaseLocators
+from ..pages.locators import SalePageLocators, BaseLocators
 
 
 def test_availability_of_name():
