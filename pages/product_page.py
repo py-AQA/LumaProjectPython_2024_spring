@@ -10,3 +10,5 @@ class ProductPage(BasePage):
         s(PL.RADIANT_TEE_QTY).type('2')
         s(PL.ADD_TO_CART_BUTTON).click()
 
+    def open_mini_cart(self):
+        s('.showcart').click()

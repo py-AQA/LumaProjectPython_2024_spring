@@ -1,8 +1,7 @@
 from time import time
-
-import pytest
 from faker import Faker
-
+import pytest
+from selene import Browser
 
 @pytest.fixture
 def first_name():
@@ -23,3 +22,10 @@ def user_email():
 @pytest.fixture
 def password():
     return Faker().password()
+
+
+# @pytest.fixture(scope='function', autouse=True)
+# def close_browser():
+#     browser = Browser()
+#     yield
+#     browser.quit()
