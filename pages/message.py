@@ -1,4 +1,4 @@
-from selene import browser, be, have
+from selene import browser, by, be, have
 from selene.support.shared.jquery_style import s, ss
 
 MESSAGE = "div.messages [data-bind ^='html']"
