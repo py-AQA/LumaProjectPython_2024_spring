@@ -1,0 +1,8 @@
+/.pytest_cache/
+/allure-report/
+/allure-results/
+/driver-report/
+/venv/
+.gitignore
+LICENSE
+README.md
