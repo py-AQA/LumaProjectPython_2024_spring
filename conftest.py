@@ -21,15 +21,14 @@ def pytest_configure(config):
 def browser_management(request):
     options = webdriver.ChromeOptions()
     options.add_argument('--window-size=1920,1080')
-    options.add_argument("--headless")
+    options.add_argument("--headless=new")
+    options.add_argument("--lang=en")
     if os.environ.get('PYTHONDONTWRITEBYTECODE') == '1':
-        # options.add_experimental_option('prefs', {'intl.accept_languages': "en-US,en;q=0.9"}) !!!! doesn't work
-        options.add_argument("--headless")
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
     browser.config.driver_options = options
 
-    browser.config.timeout = 10
+    browser.config.timeout = 15
     browser.config.log_outer_html_on_failure = True
     browser.config.reports_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), "driver-report")
     # browser.config.save_screenshot_on_failure = False
