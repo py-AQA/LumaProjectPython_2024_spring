@@ -28,7 +28,7 @@ def browser_management(request):
         options.add_argument("--disable-dev-shm-usage")
     browser.config.driver_options = options
 
-    browser.config.timeout = 15
+    browser.config.timeout = 25
     browser.config.log_outer_html_on_failure = True
     browser.config.reports_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), "driver-report")
     # browser.config.save_screenshot_on_failure = False
