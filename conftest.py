@@ -1,7 +1,9 @@
+import os
 from time import time
 from faker import Faker
 import pytest
 from selene import Browser
+
 
 @pytest.fixture
 def first_name():
@@ -24,8 +26,16 @@ def password():
     return Faker().password()
 
 
-# @pytest.fixture(scope='function', autouse=True)
-# def close_browser():
-#     browser = Browser()
-#     yield
-#     browser.quit()
+@pytest.fixture(scope='function', autouse=True)
+def close_browser():
+    browser = Browser()
+    yield
+    browser.quit()
+
+
+@pytest.hookimpl(tryfirst=True)
+def pytest_configure(config):
+    cwd_report = os.path.join(os.path.dirname(os.path.abspath(__file__)), "allure-results")
+    alluredir = getattr(config.option, "allure_report_dir", None)
+    if not alluredir:
+        setattr(config.option, "allure_report_dir", cwd_report)
