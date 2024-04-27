@@ -73,4 +73,4 @@ COPY ./pages /tests/pages
 COPY ./tests /tests/tests
 
 # Запускаем проект 
-CMD ["pytest", "-n4", "-s", "-v"]
+CMD ["pytest", "-n2", "-s", "-v"]
