@@ -7,6 +7,7 @@ import pytest
 from faker import Faker
 from selene import browser, support
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 
 @pytest.hookimpl(tryfirst=True)
@@ -17,16 +18,29 @@ def pytest_configure(config):
         setattr(config.option, "allure_report_dir", cwd_report)
 
 
+@pytest.fixture(scope="function")
+def driver():
+    options = Options()
+    options.add_argument("--window-size=1920,1080")
+    options.add_argument('--headless=new')
+    options.add_argument("--lang=en")
+    if os.environ.get("CI_RUN"):
+        options.add_argument("--headless=new")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+    driver = webdriver.Chrome(options=options)
+    yield driver
+    driver.quit()
+
+
 @pytest.fixture(autouse=True)
 def browser_management(request):
     options = webdriver.ChromeOptions()
-    options.add_argument('--window-size=1920,1080')
-
-    # options.add_argument("--headless=new")
+    options.add_argument("--window-size=1920,1080")
+    options.add_argument('--headless=new')
     options.add_argument("--lang=en")
-    if os.environ.get('CI_RUN'):
+    if os.environ.get("CI_RUN"):
         options.add_argument("--headless=new")
-
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
     browser.config.driver_options = options
@@ -98,11 +112,3 @@ def street_address():
 @pytest.fixture
 def city():
     return Faker().city()
-
-
-@pytest.fixture(scope="function")
-def driver():
-    options = webdriver.ChromeOptions()
-    browser = webdriver.Chrome(options=options)
-    yield browser
-    browser.quit()

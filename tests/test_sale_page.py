@@ -1,5 +1,5 @@
-import pytest
 from selene import browser, be, have
+
 from pages.locators import SalePageLocators, BaseLocators
 
 
@@ -48,5 +48,3 @@ def test_011_001_001_sale_breadcrumbs_is_correct(driver):
     for elem in list_br:
         actual_list_breadcrumbs.append(elem.text)
     assert expected_list_breadcrumbs == actual_list_breadcrumbs
-
-
