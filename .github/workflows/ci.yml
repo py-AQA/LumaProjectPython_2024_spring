@@ -10,13 +10,13 @@ permissions:
   id-token: write
 
 jobs:
-  jobs:
-    download-history:
-      name: Download history
-      runs-on: ubuntu-latest
+  download-history:
+    name: Download history
+    runs-on: ubuntu-latest
 
   run-test:
     name: 'Run tests'
+    needs: download-history
     runs-on: ubuntu-latest
 
     steps:
