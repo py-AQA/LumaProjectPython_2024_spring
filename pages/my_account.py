@@ -10,4 +10,3 @@ def visit():
 
 def page_title(partial_text):
     s("h1.page-title").should(have.text(partial_text))
-

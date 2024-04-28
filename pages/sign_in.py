@@ -12,5 +12,3 @@ def login(user, password):
     s("div.login-container #email").type(user)
     s("div.login-container #pass").type(password)
     s("div.login-container #send2").click()
-
-

@@ -1,5 +1,6 @@
+from pages.locators import BaseLocators
 from pages.locators import SearchTermsLocators as ST
-from pages.locators import SalePageLocators, BaseLocators
+
 
 def test_015_001_001_search_terms_title_is_visible(driver):
     driver.get(ST.LINK_SEARCH_TERMS)
@@ -43,13 +44,13 @@ def test_015_001_004_check_if_5_search_terms_is_bigger(driver):
             assert False, "List of search terms has not 5 elements which size is bigger than 88%"
 
 
-def test_015_001_005_check_if_specified_words_is_bigger_than_88(browser):
+def test_015_001_005_check_if_specified_words_is_bigger_than_88(driver):
     words = ["HOODIE", "jacket", "pants", "shirt"]
-    browser.get(ST.LINK_SEARCH_TERMS)
+    driver.get(ST.LINK_SEARCH_TERMS)
     list_of_goods = []
     list_font_sizes = []
-    print()
-    terms = browser.find_elements(*ST.LIST_OF_SEARCH_TERMS)
+
+    terms = driver.find_elements(*ST.LIST_OF_SEARCH_TERMS)
     for g in terms:
         if g.text in words:
             list_of_goods.append(g.text)
@@ -68,4 +69,3 @@ def test_015_001_006_check_if_search_terms_are_sorted(driver):
     list_of_goods = []
     sorted_list = sorted(list_of_goods)
     assert list_of_goods == sorted_list, "Goods are not sorted from A to Z"
-
