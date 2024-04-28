@@ -72,5 +72,6 @@ COPY conftest.py /tests/conftest.py
 COPY ./pages /tests/pages
 COPY ./tests /tests/tests
 
+ENV CI_RUN=true
 # Запускаем проект 
-CMD ["pytest", "-n4", "-s", "-v"]
+CMD ["pytest", "-n2", "-s", "-v"]

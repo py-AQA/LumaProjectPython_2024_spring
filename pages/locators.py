@@ -20,6 +20,24 @@ class ProductLocators():
     MINI_BASKET_WINDOW = '[class="action showcart"]'
 
 
+class HomeLocators:
+    STORE_LOGO = 'a.logo'
+
+class NavigatorLocators:
+    NAV_NEW = '#ui-id-3'
+    NAV_WOMEN = '#ui-id-4'
+    NAV_MEN = '#ui-id-5'
+    NAV_GEAR = '#ui-id-6'
+    NAV_TRAINING = '#ui-id-7'
+    NAV_SALE = '#ui-id-8'    
+
+
+class SideBarLocators:
+    BREADCRUMBS = '.breadcrumbs'
+    ITEM_HOME = '.item.home a'
+    SIDEBAR_MAIN = '.sidebar.sidebar-main'
+    CATEGORIES_MENU = '.categories-menu'
+    FILTER = '.block.filter'
 
 
 class BaseLocators():
