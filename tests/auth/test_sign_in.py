@@ -10,4 +10,4 @@ def test_sign_in_with_good_credentials():
 def test_sign_in_with_bad_credentials():
     sign_in.visit()
     sign_in.login("jasonbrown1714146903@example.net", "wrong_password")
-    message.should_be("T11he account sign-in was incorrect")
+    message.should_be("The account sign-in was incorrect")
