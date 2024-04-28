@@ -13,6 +13,10 @@ jobs:
   download-history:
     name: Download history
     runs-on: ubuntu-latest
+    steps:
+      - name: Do something
+        run: |
+          python -V
 
   run-test:
     name: 'Run tests'
