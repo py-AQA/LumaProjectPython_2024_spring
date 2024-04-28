@@ -24,6 +24,7 @@ def browser_management(request):
     # options.add_argument("--headless=new")
     options.add_argument("--lang=en")
     if os.environ.get('PYTHONDONTWRITEBYTECODE') == '1':
+        options.add_argument("--headless=new")
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
     browser.config.driver_options = options
