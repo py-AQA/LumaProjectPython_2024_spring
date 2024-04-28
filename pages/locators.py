@@ -1,9 +1,19 @@
+from selenium.webdriver.common.by import By
 
 
 class SalePageLocators():
     GEAR_DEALS_TITLE = "//*[text()='Gear Deals']"
     BAGS_LINK = "//a[text()='Bags']"
     FITNESS_EQUIPMENT_LINK = "//a[text()='Fitness Equipment']"
+    LINK_SALE = "https://magento.softwaretestingboard.com/sale.html"
+    LINK_WOMEN_SALE = "https://magento.softwaretestingboard.com/promotions/women-sale.html"
+    LINK_TEES_WOMEN = "https://magento.softwaretestingboard.com/women/tops-women/tees-women.html"
+
+    BREADCRUMBS_LINKS_ON_PAGE_TEES = ['https://magento.softwaretestingboard.com/',
+                                      'https://magento.softwaretestingboard.com/women.html',
+                                      'https://magento.softwaretestingboard.com/women/tops-women.html']
+    BREADCRUMBS_LINKS_ON_PAGE_WOMEN_SALE = ['https://magento.softwaretestingboard.com/',
+                                            'https://magento.softwaretestingboard.com/sale.html']
 
 
 class ProductLocators():
@@ -37,3 +47,13 @@ class SideBarLocators:
 
 class BaseLocators():
     PAGE_NAME = ".base"
+    PAGE_TITLE = (By.CSS_SELECTOR, 'h1')
+    BREADCRUMBS_LIST = (By.CSS_SELECTOR, ".breadcrumbs li")
+    BREADCRUMBS_LINKS = (By.CSS_SELECTOR, '.breadcrumbs > ul  > li > a')
+
+
+class SearchTermsLocators():
+    LINK_SEARCH_TERMS = "https://magento.softwaretestingboard.com/search/term/popular/"
+    TERMS_FOR_SEARCH_LIST_QTY = (By.CSS_SELECTOR, '[class="item"]')
+    LIST_OF_SEARCH_TERMS = (By.CSS_SELECTOR, '[class="item"] a')
+

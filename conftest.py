@@ -96,3 +96,11 @@ def street_address():
 @pytest.fixture
 def city():
     return Faker().city()
+
+
+@pytest.fixture(scope="function")
+def driver():
+    options = webdriver.ChromeOptions()
+    browser = webdriver.Chrome(options=options)
+    yield browser
+    browser.quit()
