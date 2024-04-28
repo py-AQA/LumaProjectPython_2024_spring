@@ -1,4 +1,5 @@
 from selene import browser, be, have
+from pages.home_page import HomePage
 
 def test_breadcrumb_trails():
 
