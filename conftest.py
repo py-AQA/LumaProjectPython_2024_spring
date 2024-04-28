@@ -21,10 +21,12 @@ def pytest_configure(config):
 def browser_management(request):
     options = webdriver.ChromeOptions()
     options.add_argument('--window-size=1920,1080')
+
     # options.add_argument("--headless=new")
     options.add_argument("--lang=en")
     if os.environ.get('CI_RUN'):
         options.add_argument("--headless=new")
+
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
     browser.config.driver_options = options
