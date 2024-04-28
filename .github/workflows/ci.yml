@@ -21,7 +21,7 @@ jobs:
           python-version: "3.11"
 
       - name: Get previous run artifact
-      - run: >
+        run: >
           ARTIFACT_ID=$(curl -L 
           -H "Accept: application/vnd.github+json" 
           -H "X-GitHub-Api-Version: 2022-11-28" 
@@ -106,7 +106,7 @@ jobs:
           distribution: 'corretto'
           java-version: '17'
 
-      - name: Name
+      - name: Install allure
         run: |
           sudo wget https://github.com/allure-framework/allure2/releases/download/2.29.0/allure-2.29.0.tgz && sudo tar -zxvf allure-2.29.0.tgz -C /opt/ && sudo ln -s /opt/allure-2.29.0/bin/allure /usr/bin/allure
 
