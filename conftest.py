@@ -18,10 +18,10 @@ def pytest_configure(config):
 
 
 @pytest.fixture(autouse=True)
-def browser_management(request):
+def browser_management():
     options = webdriver.ChromeOptions()
     options.add_argument('--window-size=1920,1080')
-    options.add_argument("--headless")
+    # options.add_argument("--headless")
     if os.environ.get('PYTHONDONTWRITEBYTECODE') == '1':
         # options.add_experimental_option('prefs', {'intl.accept_languages': "en-US,en;q=0.9"}) !!!! doesn't work
         options.add_argument("--headless")
@@ -30,24 +30,25 @@ def browser_management(request):
     browser.config.driver_options = options
 
     browser.config.timeout = 10
-    browser.config.log_outer_html_on_failure = True
+    # browser.config.window_width = 1920
+    # browser.config.windows_height = 1080
     browser.config.reports_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), "driver-report")
+    # browser.config.last_page_source = "123"
+    browser.config.log_outer_html_on_failure = True
     # browser.config.save_screenshot_on_failure = False
     # browser.config.save_page_source_on_failure = False
 
     browser.config._wait_decorator = support._logging.wait_with(
         context=allure_commons._allure.StepContext
     )
-    failed_before = request.session.testsfailed
 
     yield
 
-    if request.session.testsfailed != failed_before:
-        allure.attach(
-            browser.driver.get_screenshot_as_png(),
-            name="screenshot",
-            attachment_type=allure.attachment_type.PNG
-        )
+    allure.attach(
+        browser.driver.get_screenshot_as_png(),
+        name="screenshot",
+        attachment_type=allure.attachment_type.PNG
+    )
     browser.quit()
 
 
