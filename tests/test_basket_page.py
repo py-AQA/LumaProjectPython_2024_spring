@@ -5,7 +5,7 @@ from pages.locators import *
 from pages.urls import main_page_link
 from pages.basket_page import BasketPage
 from pages.base_page import BasePage
-
+import allure
 
 def test_add_to_cart_from_main():
     page = BasketPage(browser, main_page_link)
@@ -13,6 +13,7 @@ def test_add_to_cart_from_main():
     page.add_to_cart_from_main_page()
 
 
+@allure('https://trello.com/c/WVaLK93g')
 def test_check_link_present_in_the_window_mini_cart():
     page = BasketPage(browser, main_page_link)
     page.open()
