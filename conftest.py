@@ -7,6 +7,7 @@ import pytest
 from faker import Faker
 from selene import browser, support
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 
 @pytest.hookimpl(tryfirst=True)
@@ -17,30 +18,43 @@ def pytest_configure(config):
         setattr(config.option, "allure_report_dir", cwd_report)
 
 
+@pytest.fixture(scope="function")
+def driver():
+    options = Options()
+    options.add_argument("--window-size=1920,1080")
+    # options.add_argument('--headless=new')
+    options.add_argument("--lang=en")
+    if os.environ.get("CI_RUN"):
+        options.add_argument("--headless=new")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+    driver = webdriver.Chrome(options=options)
+    yield driver
+    driver.quit()
+
+
 @pytest.fixture(autouse=True)
 def browser_management(request):
     options = webdriver.ChromeOptions()
-    options.add_argument('--window-size=1920,1080')
-
-    # options.add_argument("--headless=new")
+    options.add_argument("--window-size=1920,1080")
+    options.add_argument('--headless=new')
     options.add_argument("--lang=en")
-    if os.environ.get('CI_RUN'):
+    if os.environ.get("CI_RUN"):
         options.add_argument("--headless=new")
-
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
     browser.config.driver_options = options
 
     browser.config.timeout = 25
-    browser.config.log_outer_html_on_failure = True
+    # browser.config.log_outer_html_on_failure = True !!! DISABLES STEPS !!!
     browser.config.reports_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), "driver-report")
     if os.environ.get('CI_RUN'):
         browser.config.save_screenshot_on_failure = False
         browser.config.save_page_source_on_failure = False
 
     browser.config._wait_decorator = support._logging.wait_with(
-        context=allure_commons._allure.StepContext
-    )
+            context=allure_commons._allure.StepContext
+        )
     failed_before = request.session.testsfailed
 
     yield

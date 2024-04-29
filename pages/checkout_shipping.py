@@ -1,6 +1,7 @@
 from selene import browser, be, have
 from selene.support.shared.jquery_style import s, ss
 
+
 def fill_shipping_address(user_email, first_name, last_name, street_address, city):
     # s("").with_(timeout=10).click()
     s('#customer-email-fieldset #customer-email').with_(timeout=30).type(user_email)

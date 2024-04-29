@@ -1,8 +1,8 @@
-from selene.support.shared.jquery_style import s, ss
+from selene.support.shared.jquery_style import s
 
 from pages import message
-from pages.locators import ProductLocators as PL
 from pages.base_page import BasePage
+from pages.locators import ProductLocators as PL
 
 
 class ProductPage(BasePage):

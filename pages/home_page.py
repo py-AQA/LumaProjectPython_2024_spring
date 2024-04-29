@@ -3,6 +3,7 @@ from selene.support.shared.jquery_style import s, ss
 from pages.base_page import BasePage
 from pages.locators import NavigatorLocators as NL
 
+
 class HomePage(BasePage):
 
     def go_to_pages(self):
@@ -15,4 +16,3 @@ class HomePage(BasePage):
 
     def navigate_to(self, locator):
         s(locator).click()
-        

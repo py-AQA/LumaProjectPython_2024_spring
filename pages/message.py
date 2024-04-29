@@ -6,4 +6,3 @@ MESSAGE = "div.messages [data-bind ^='html']"
 
 def should_be(partial_text):
     s(MESSAGE).should(have.text(partial_text))
-
