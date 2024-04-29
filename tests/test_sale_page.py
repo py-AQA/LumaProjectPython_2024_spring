@@ -1,5 +1,5 @@
 from selene import browser, be, have
-
+from selene.support.shared.jquery_style import s, ss
 from pages.locators import SalePageLocators, BaseLocators
 
 
@@ -40,11 +40,18 @@ def test_fitness_link_clickability():
     browser.element(BaseLocators.PAGE_NAME).should(have.text('Fitness'))
 
 
-def test_011_001_001_sale_breadcrumbs_is_correct(driver):
-    driver.get(SalePageLocators.LINK_SALE)
-    list_br = driver.find_elements(*BaseLocators.BREADCRUMBS_LIST)
-    expected_list_breadcrumbs = ['Home', 'Sale']
-    actual_list_breadcrumbs = []
-    for elem in list_br:
-        actual_list_breadcrumbs.append(elem.text)
-    assert expected_list_breadcrumbs == actual_list_breadcrumbs
+# def test_011_001_001_selenium(driver):
+#     driver.get(SalePageLocators.LINK_SALE)
+#     list_br = driver.find_elements(*BaseLocators.BREADCRUMBS_LIST)
+#     expected_list_breadcrumbs = ['Home', 'Sale']
+#     actual_list_breadcrumbs = []
+#     for elem in list_br:
+#         actual_list_breadcrumbs.append(elem.text)
+#     assert expected_list_breadcrumbs == actual_list_breadcrumbs
+
+
+def test_011_001_001_sale_breadcrumbs_is_correct():
+    browser.open(SalePageLocators.LINK_SALE)
+    ss(BaseLocators.BREADCRUMBS_LIST).should(have.texts('Home', 'Sale'))
+
+

@@ -53,12 +53,12 @@ class SideBarLocators:
 
 class BaseLocators:
     PAGE_NAME = ".base"
-    PAGE_TITLE = (By.CSS_SELECTOR, 'h1')
-    BREADCRUMBS_LIST = (By.CSS_SELECTOR, ".breadcrumbs li")
-    BREADCRUMBS_LINKS = (By.CSS_SELECTOR, '.breadcrumbs > ul  > li > a')
+    PAGE_TITLE = 'h1'
+    BREADCRUMBS_LIST = ".breadcrumbs li"
+    BREADCRUMBS_LINKS = '.breadcrumbs > ul  > li > a'
 
 
 class SearchTermsLocators:
     LINK_SEARCH_TERMS = "https://magento.softwaretestingboard.com/search/term/popular/"
-    TERMS_FOR_SEARCH_LIST_QTY = (By.CSS_SELECTOR, '[class="item"]')
-    LIST_OF_SEARCH_TERMS = (By.CSS_SELECTOR, '[class="item"] a')
+    TERMS_FOR_SEARCH_LIST_QTY = '[class="item"]'
+    LIST_OF_SEARCH_TERMS = '[class="item"] a'
