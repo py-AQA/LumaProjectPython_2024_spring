@@ -1,11 +1,12 @@
 import time
 
-from selene import browser, be, have
-from pages.locators import *
-from pages.urls import main_page_link
+from selene import browser
+
 from pages.basket_page import BasketPage
-from pages.base_page import BasePage
 import allure
+
+from pages.urls import main_page_link
+
 
 def test_add_to_cart_from_main():
     page = BasketPage(browser, main_page_link)
