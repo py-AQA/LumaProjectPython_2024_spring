@@ -1,3 +1,4 @@
+import pytest
 from selene.support.conditions.have import values_containing, values
 from selenium.webdriver.support.expected_conditions import any_of
 
@@ -33,7 +34,7 @@ def test_011_016_002_breadcrumbs_redirection_from_women_tees(driver):
 #                               'https://magento.softwaretestingboard.com/women.html',
 #                               'https://magento.softwaretestingboard.com/women/tops-women.html')))
 
-
+@pytest.mark.xfail
 def test_011_016_002_breadcrumbs_redirection_from_women_tees_new4():
     browser.open(SalePageLocators.LINK_TEES_WOMEN)
     elements = ss(BaseLocators.BREADCRUMBS_LINKS).filtered_by(have.attribute('href'))
@@ -46,8 +47,19 @@ def test_011_016_002_breadcrumbs_redirection_from_women_tees_new4():
         element.should(have.attribute('href').value(any_of(*expected_links)))
 
 
-
 def test_011_016_002_breadcrumbs_redirection_from_women_tees_new3():
     browser.open(SalePageLocators.LINK_TEES_WOMEN)
     ss(BaseLocators.BREADCRUMBS_LINKS).filtered_by(have.attribute('href')).should(
         have.texts('Home', 'Women', 'Tops'))
+
+
+def test_011_016_002_breadcrumbs_redirection_from_women_tees_new32():
+    browser.open(SalePageLocators.LINK_TEES_WOMEN)
+
+    elements = ss('.breadcrumbs > ul  > li > a').filtered_by(have.attribute('href'))
+    expected_links = ['https://magento.softwaretestingboard.com/',
+                      'https://magento.softwaretestingboard.com/women.html',
+                      'https://magento.softwaretestingboard.com/women/tops-women.html']
+
+    for i, element in enumerate(elements):
+        element.should(have.attribute('href', expected_links[i]))
