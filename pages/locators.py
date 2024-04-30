@@ -28,6 +28,8 @@ class ProductLocators:
     ARGUS_All_WEATHER_TANK_COLOR = '//*[@title="Argus All-Weather Tank"]/../..//*[@option-label="Gray"]'
     ARGUS_All_WEATHER_TANK_ADD_TO_CARD = '//*[@title="Argus All-Weather Tank"]/../..//*[@title="Add to Cart"]'
     MINI_BASKET_WINDOW = '[class="action showcart"]'
+    VIEW_AND_EDIT_CART_LINK = "//*[text()='View and Edit Cart']"
+    VIEW_AND_EDIT_CART_HREF = "[class='action viewcart']"
 
 
 class HomeLocators:
