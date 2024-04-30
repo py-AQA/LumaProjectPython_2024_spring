@@ -1,6 +1,7 @@
 from selene import browser, be, have
 from selene.support.shared.jquery_style import s, ss
 from pages.locators import SalePageLocators, BaseLocators
+import allure
 
 
 @allure.link('https://trello.com/c/6x8wE9U7')
@@ -29,6 +30,7 @@ def test_bags_link_clickability():
     browser.element(SalePageLocators.BAGS_LINK).should(be.clickable)
 
 
+@allure.link('https://trello.com/c/QRHjcYZH')
 def test_bags_link_correct_redirection():
     browser.open('https://magento.softwaretestingboard.com/sale.html')
     browser.element(SalePageLocators.BAGS_LINK).click()
@@ -42,6 +44,7 @@ def test_fitness_link_clickability():
     browser.element(SalePageLocators.FITNESS_EQUIPMENT_LINK).click()
 
 
+@allure.link('https://trello.com/c/tTSnRKWm')
 def test_fitness_link_correct_redirection():
     browser.open('https://magento.softwaretestingboard.com/sale.html')
     browser.element(SalePageLocators.FITNESS_EQUIPMENT_LINK).click()
