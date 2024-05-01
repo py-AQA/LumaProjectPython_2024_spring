@@ -122,7 +122,7 @@ jobs:
         run: |
           allure generate -c allure-results -o _site
 
-      - name: Store generated report
+      - name: Store generated report as _site artifact
         uses: actions/upload-artifact@v3
         with:
           name: _site
@@ -136,12 +136,12 @@ jobs:
     needs: generate-report
     name: Report publication
     steps:
-      - name: Download all workflow run artifacts
+      - name: Download _site workflow run artifact
         uses: actions/download-artifact@v3
         with:
-          name: github-pages
+          name: _site
           path:
-            github-pages
+            _site
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v2
