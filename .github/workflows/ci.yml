@@ -138,6 +138,10 @@ jobs:
     steps:
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
+        with:
+          name: github-pages
+          path:
+            github-pages
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v2
