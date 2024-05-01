@@ -46,6 +46,7 @@ def test_011_016_002_breadcrumbs_redirection_from_women_tees():
     for i, element in enumerate(elements):
         element.should(have.attribute('href').value(expected_links[i]))
 
+
 def test_011_016_002_check_links_in_breadcrumps():
     # сравнить ссылки ожидаемые и фактические перебором по очереди
     expected_links = ['https://magento.softwaretestingboard.com/',
@@ -53,6 +54,7 @@ def test_011_016_002_check_links_in_breadcrumps():
                       'https://magento.softwaretestingboard.com/women/tops-women.html']
     browser.open(SalePageLocators.LINK_TEES_WOMEN)
     for i, item in enumerate(ss(BaseLocators.BREADCRUMBS_LINKS).by(have.attribute('href'))):
+        print(item.get(query.attribute('href')))
         assert expected_links[i] == item.get(query.attribute('href'))
 
 

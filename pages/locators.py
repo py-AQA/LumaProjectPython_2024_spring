@@ -64,3 +64,16 @@ class SearchTermsLocators:
     LINK_SEARCH_TERMS = "https://magento.softwaretestingboard.com/search/term/popular/"
     TERMS_FOR_SEARCH_LIST_QTY = '[class="item"]'
     LIST_OF_SEARCH_TERMS = '[class="item"] a'
+
+
+class LoginLocators:
+    LINK_LOGIN = 'https://magento.softwaretestingboard.com/customer/account/login'
+    FIELD_NAME = 'div.login-container #email'
+    FIELD_PASSWORD = 'div.login-container #pass'
+    BUTTON_SUBMIT = 'div.login-container #send2'
+    MESSAGE_UNSUCCESSFUL = '#pass-error'
+    USER_NAME_IN_WELCOME = '.logged-in'
+    AUTHORIZATION_LINK = 'authorization-link'
+    LINK_ACCOUNT = 'https://magento.softwaretestingboard.com/customer/account/'
+
+
