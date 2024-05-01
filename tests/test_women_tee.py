@@ -4,7 +4,7 @@ from selenium.webdriver.support.expected_conditions import any_of
 
 from pages.locators import SalePageLocators, BaseLocators
 import pytest
-from selene import browser, be, have
+from selene import browser, be, have, query
 from selene.support.shared.jquery_style import s, ss
 
 
@@ -36,22 +36,25 @@ def test_011_016_001_women_tees_breadcrumbs_is_correct():
 #     assert links == SalePageLocators.BREADCRUMBS_LINKS_ON_PAGE_TEES
 
 
-def test_011_016_002_breadcrumbs_redirection_from_women_tees_new32():
+def test_011_016_002_breadcrumbs_redirection_from_women_tees():
+    # correct, already in school git
     browser.open(SalePageLocators.LINK_TEES_WOMEN)
-    elements = ss('.breadcrumbs > ul  > li > a').by(have.attribute('href'))
+    elements = ss(BaseLocators.BREADCRUMBS_LINKS).by(have.attribute('href'))
     expected_links = ['https://magento.softwaretestingboard.com/',
                       'https://magento.softwaretestingboard.com/women.html',
                       'https://magento.softwaretestingboard.com/women/tops-women.html']
     for i, element in enumerate(elements):
         element.should(have.attribute('href').value(expected_links[i]))
 
+def test_011_016_002_check_links_in_breadcrumps():
+    # сравнить ссылки ожидаемые и фактические перебором по очереди
+    expected_links = ['https://magento.softwaretestingboard.com/',
+                      'https://magento.softwaretestingboard.com/women.html',
+                      'https://magento.softwaretestingboard.com/women/tops-women.html']
+    browser.open(SalePageLocators.LINK_TEES_WOMEN)
+    for i, item in enumerate(ss(BaseLocators.BREADCRUMBS_LINKS).by(have.attribute('href'))):
+        assert expected_links[i] == item.get(query.attribute('href'))
 
-# def test_011_016_002_breadcrumbs_redirection_from_women_tees_new42():
-#     browser.open(SalePageLocators.LINK_TEES_WOMEN)
-#     ss(BaseLocators.BREADCRUMBS_LINKS).filtered_by(have.attribute('href')).should(
-#         have.attribute('href', values_containing('https://magento.softwaretestingboard.com/',
-#                               'https://magento.softwaretestingboard.com/women.html',
-#                               'https://magento.softwaretestingboard.com/women/tops-women.html')))
 
 @pytest.mark.xfail
 def test_011_016_002_breadcrumbs_redirection_from_women_tees_new4():
