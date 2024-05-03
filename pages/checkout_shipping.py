@@ -41,6 +41,7 @@ def fill_shipping_address_class():
     s('#billing-address-same-as-shipping-checkmo').click()
     s('.primary.checkout').click()
 
+
     # Находим выпадающий список по селектору
     # select_element = browser.s('[name="region_id"]')
 
