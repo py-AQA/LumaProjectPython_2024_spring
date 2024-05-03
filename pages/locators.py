@@ -58,6 +58,15 @@ class BaseLocators:
     PAGE_TITLE = 'h1'
     BREADCRUMBS_LIST = ".breadcrumbs li"
     BREADCRUMBS_LINKS = '.breadcrumbs > ul  > li > a'
+    PRODUCT_ITEM_IN_CATALOG = 'li.product-item'  # каждый товар на любой странице в целом
+    PRODUCT_PRICE = '.price-label'
+    PRODUCT_NAME = '.product-item-link'
+    PRODUCT_IMAGE = '.product-image-photo'
+    ALL_URL = ["https://magento.softwaretestingboard.com/",
+               "https://magento.softwaretestingboard.com/what-is-new.html",
+               "https://magento.softwaretestingboard.com/women/tops-women/jackets-women.html,"
+               "https://magento.softwaretestingboard.com/training.html"
+               ]
 
 
 class SearchTermsLocators:
@@ -77,3 +86,5 @@ class LoginLocators:
     LINK_ACCOUNT = 'https://magento.softwaretestingboard.com/customer/account/'
 
 
+class PerformanceSportswear:
+    LINK_SPORT = "https://magento.softwaretestingboard.com/collections/performance-new.html"
