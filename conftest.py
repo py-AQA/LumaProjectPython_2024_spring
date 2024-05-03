@@ -22,7 +22,7 @@ def pytest_configure(config):
 def driver():
     options = Options()
     options.add_argument("--window-size=1920,1080")
-    options.add_argument('--headless=new')
+    # options.add_argument('--headless=new')
     options.add_argument("--lang=en")
     if os.environ.get("CI_RUN"):
         options.add_argument("--headless=new")
@@ -113,3 +113,17 @@ def street_address():
 @pytest.fixture
 def city():
     return Faker().city()
+
+
+@pytest.fixture
+def user(user_email, first_name, last_name, street_address, city, postcode, phone_number):
+    return {'user_email': user_email,
+            "first_name": first_name,
+            'last_name': last_name,
+            'street_address': street_address,
+            'city': city,
+            'postcode': postcode,
+            'phone_number': phone_number}
+
+
+
