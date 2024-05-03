@@ -1,3 +1,5 @@
+from selenium.webdriver.common.by import By
+
 from pages.locators import SearchTermsLocators as ST
 from pages.locators import BaseLocators as Base
 from selene import browser, be, have
@@ -31,7 +33,7 @@ def test_015_001_002_count_search_terms():
 def test_015_001_003_check_if_search_terms_has_size_from_76_till_136(driver):
     driver.get(ST.LINK_SEARCH_TERMS)
     list_font_sizes = []
-    terms = driver.find_elements(*ST.LIST_OF_SEARCH_TERMS)
+    terms = driver.find_elements(By.CSS_SELECTOR, ST.LIST_OF_SEARCH_TERMS)
     for g in terms:
         g_font, g_size = g.get_attribute("style").split(": ")
         g_size = float(g_size.replace("%;", ""))
@@ -46,7 +48,7 @@ def test_015_001_003_check_if_search_terms_has_size_from_76_till_136(driver):
 def test_015_001_004_check_if_5_search_terms_is_bigger(driver):
     driver.get(ST.LINK_SEARCH_TERMS)
     list_font_sizes = []
-    terms = driver.find_elements(*ST.LIST_OF_SEARCH_TERMS)
+    terms = driver.find_elements(By.CSS_SELECTOR, ST.LIST_OF_SEARCH_TERMS)
     for g in terms:
         g_font, g_size = g.get_attribute("style").split(": ")
         g_size = float(g_size.replace("%;", ""))
@@ -63,7 +65,7 @@ def test_015_001_005_check_if_specified_words_is_bigger_than_88(driver):
     list_of_goods = []
     list_font_sizes = []
     print()
-    terms = driver.find_elements(*ST.LIST_OF_SEARCH_TERMS)
+    terms = driver.find_elements(By.CSS_SELECTOR, ST.LIST_OF_SEARCH_TERMS)
     for g in terms:
         if g.text in words:
             list_of_goods.append(g.text)
