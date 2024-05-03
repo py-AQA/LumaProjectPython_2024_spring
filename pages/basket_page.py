@@ -47,3 +47,23 @@ class BasketPage(BasePage):
         self.add_to_cart_from_main_page()
         s(PL.MINI_BASKET_WINDOW).click()
         s(PL.VIEW_AND_EDIT_CART_LINK).click()
+
+    def checking_the_size_color_and_product_name_are_correct(self):
+        self.add_to_cart_from_main_page()
+        s(PL.MINI_BASKET_WINDOW).should(be.clickable).click()
+        s(PL.SEE_DETAILS).click()
+        s(PL.SIZE_M).should(have.text("M"))
+        s(PL.COLOR_GRAY).should(have.text("Gray"))
+        s(PL.NAME_ITEM).should(have.text("Argus All-Weather Tank"))
+
+    def checking_present_price_item_and_cart_subtotal_in_the_mini_cart(self):
+        self.add_to_cart_from_main_page()
+        s(PL.MINI_BASKET_WINDOW).should(be.clickable).click()
+        s(PL.PRICE_ITEM).should(have.text("$22.00"))
+        s(PL.CART_SUBTOTAL).should(have.text("$22.00"))
+
+    def change_quantity_of_an_item_and_changes_price_in_cart_ubtotal_mini_cart(self):
+        self.add_to_cart_from_main_page()
+        s(PL.MINI_BASKET_WINDOW).should(be.clickable).click()
+        s(PL.QTY_FIELD).click()
+        s(PL.QTY_FIELD).set("2")
