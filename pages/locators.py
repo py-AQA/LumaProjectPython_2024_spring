@@ -30,7 +30,13 @@ class ProductLocators:
     MINI_BASKET_WINDOW = '[class="action showcart"]'
     VIEW_AND_EDIT_CART_LINK = "//*[text()='View and Edit Cart']"
     VIEW_AND_EDIT_CART_HREF = "[class='action viewcart']"
-
+    SEE_DETAILS = '[data-role="title"]'
+    SIZE_M = '//*[@class="product options list"]//*[text()="M"]'
+    COLOR_GRAY = '//*[@class="product options list"]//*[text()="Gray"]'
+    NAME_ITEM = '//*[text()="Argus All-Weather Tank"]'
+    PRICE_ITEM = '//*[@class="minicart-price"]//*[@class="price"]'
+    CART_SUBTOTAL = '.subtotal .price'
+    QTY_FIELD = ".details-qty input"
 
 class HomeLocators:
     STORE_LOGO = 'a.logo'
