@@ -22,14 +22,15 @@ def test_checkout_from_mini_cart():
     page.open_mini_cart()
     mini_cart.checkout()
     checkout_shipping.fill_shipping_address_class()
-    browser.should(have.url(expected_url))
-    s('.base').should(be.visible)  # виден на странице
+
     s('[data-ui-id="page-title-wrapper"]').should(be.present) #присутствует на странице
+    s('.base').should(be.visible)  # виден на странице
     s('[data-ui-id="page-title-wrapper"]').should(be.in_dom) #присутствует в доме
     s('[data-ui-id="page-title-wrapper"]').should(be.not_.hidden) #не скрыт на странице
-    s('.base').with_(timeout=30).should(have.text(success_message))
+    s('.base').should(have.text(success_message))
     s('[data-ui-id="page-title-wrapper"]').should(have.no.text(failure_message))
-
+    browser.should(have.url(expected_url))
+    browser.should(have.url_containing('success'))
 
 
 

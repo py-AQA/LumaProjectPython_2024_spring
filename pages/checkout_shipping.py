@@ -20,6 +20,7 @@ from selene.support import by
 #     s('#checkout-shipping-method-load input').click()
 #     s('.continue').click()
 
+
 def fill_shipping_address_class():
     person1 = Person()
     # s("").with_(timeout=10).click()
@@ -36,8 +37,14 @@ def fill_shipping_address_class():
     s('[name="telephone"]').type(person1.phone_number)
     s('#checkout-shipping-method-load input').click()
     s('.continue').click()
-    # s('#billing-address-same-as-shipping-checkmo').with_(timeout=30).click()
-    s('.primary.checkout').click()
+    # Проверка выбран ли элемент
+    if s('#billing-address-same-as-shipping-checkmo').wait_until(be.selected):
+        # Если элемент выбран
+        s('.primary.checkout').click()
+    else:
+        # Если элемент не выбран
+        s('#billing-address-same-as-shipping-checkmo').click()
+        s('.primary.checkout').click()
 
     # Находим выпадающий список по селектору
     # select_element = browser.s('[name="region_id"]')
