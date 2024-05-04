@@ -1,5 +1,7 @@
+import pytest
+
 from pages import sign_in, my_account, message
-from pages.locators import LoginLocators
+from pages.locators import LoginLocators, BaseLocators
 from selene import browser, be, have
 from selene.support.shared.jquery_style import s
 
@@ -33,5 +35,14 @@ def test_004_005_002_login_successful():
     s(LoginLocators.AUTHORIZATION_LINK).should(have.no.text("Sign In"))
 
 
+def test_004_005_003_nickname_on_each_page():
+    # I used only 4 links, otherwise test will take too much time
+    browser.open(LoginLocators.LINK_LOGIN)
+    s(LoginLocators.FIELD_NAME).type("ahahah1@gmail.com")
+    s(LoginLocators.FIELD_PASSWORD).type("jk$34_tor")
+    s(LoginLocators.BUTTON_SUBMIT).click()
+    for lnk in BaseLocators.ALL_URL:
+        browser.open(lnk)
+        s(LoginLocators.USER_NAME_IN_WELCOME).should(have.text("фы ывф"))
 
 

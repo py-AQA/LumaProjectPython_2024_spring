@@ -22,7 +22,7 @@ def test_checkout_from_mini_cart():
     page.open_mini_cart()
     mini_cart.checkout()
     checkout_shipping.fill_shipping_address_class()
-
+    s('#registration').should(be.visible)
     s('[data-ui-id="page-title-wrapper"]').should(be.present) #присутствует на странице
     s('.base').should(be.visible)  # виден на странице
     s('[data-ui-id="page-title-wrapper"]').should(be.in_dom) #присутствует в доме
