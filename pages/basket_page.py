@@ -1,3 +1,5 @@
+import time
+import pyautogui
 import pytest
 from selene import browser, be, have
 from selene.support.conditions.have import css_property
@@ -17,6 +19,7 @@ class BasketPage(BasePage):
     def check_color_and_clickability_of_view_and_edit_cart_link_in_the_mini_cart(self):
         # добавляем функцию add_to_cart_from_main_page()
         self.add_to_cart_from_main_page()
+        time.sleep(1)
         s(PL.MINI_BASKET_WINDOW).click()
         edit = s(PL.VIEW_AND_EDIT_CART_HREF)
         edit.should(have.attribute("href"))
@@ -45,11 +48,13 @@ class BasketPage(BasePage):
 
     def checking_the_link_opens_the_cart_page(self):
         self.add_to_cart_from_main_page()
-        s(PL.MINI_BASKET_WINDOW).click()
+        time.sleep(1)
+        s(PL.MINI_BASKET_WINDOW).should(be.clickable).click()
         s(PL.VIEW_AND_EDIT_CART_LINK).click()
 
     def checking_the_size_color_and_product_name_are_correct(self):
         self.add_to_cart_from_main_page()
+        time.sleep(1)
         s(PL.MINI_BASKET_WINDOW).should(be.clickable).click()
         s(PL.SEE_DETAILS).click()
         s(PL.SIZE_M).should(have.text("M"))
@@ -58,12 +63,19 @@ class BasketPage(BasePage):
 
     def checking_present_price_item_and_cart_subtotal_in_the_mini_cart(self):
         self.add_to_cart_from_main_page()
+        time.sleep(1)
         s(PL.MINI_BASKET_WINDOW).should(be.clickable).click()
         s(PL.PRICE_ITEM).should(have.text("$22.00"))
         s(PL.CART_SUBTOTAL).should(have.text("$22.00"))
 
-    def change_quantity_of_an_item_and_changes_price_in_cart_ubtotal_mini_cart(self):
+    def change_quantity_of_an_item_and_changes_price_in_cart_subtotal_mini_cart(self):
         self.add_to_cart_from_main_page()
+        time.sleep(1)
         s(PL.MINI_BASKET_WINDOW).should(be.clickable).click()
         s(PL.QTY_FIELD).click()
-        s(PL.QTY_FIELD).set("2")
+        pyautogui.press("right")
+        pyautogui.press('backspace')
+        s(PL.QTY_FIELD).should(be.clickable).set(4)
+        s(PL.UPDATE).click()
+        time.sleep(2)
+        browser.quit()
