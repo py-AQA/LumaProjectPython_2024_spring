@@ -1,7 +1,6 @@
-import pytest
+import allure
 from selene import browser
 from pages.basket_page import BasketPage
-import allure
 from pages.urls import main_page_link
 
 
@@ -58,7 +57,9 @@ def test_checking_present_price_item_and_cart_subtotal_in_the_mini_cart_tc_005_0
     page.open()
     page.checking_present_price_item_and_cart_subtotal_in_the_mini_cart()
 
-def test_change_quantity_of_an_item_and_changes_price_in_cart_ubtotal_mini_cart():
+
+@allure.link("https://trello.com/c/uCZZgQks")
+def test_change_quantity_of_an_item_and_changes_price_in_cart_subtotal_mini_cart_tc_005_001_015():
     page = BasketPage(browser, main_page_link)
     page.open()
-    page.change_quantity_of_an_item_and_changes_price_in_cart_ubtotal_mini_cart()
+    page.change_quantity_of_an_item_and_changes_price_in_cart_subtotal_mini_cart()
