@@ -1,5 +1,5 @@
 import time
-import pyautogui
+# import pyautogui
 import pytest
 from selene import browser, be, have
 from selene.support.conditions.have import css_property
@@ -73,8 +73,8 @@ class BasketPage(BasePage):
         time.sleep(1)
         s(PL.MINI_BASKET_WINDOW).should(be.clickable).click()
         s(PL.QTY_FIELD).click()
-        pyautogui.press("right")
-        pyautogui.press('backspace')
+   #     pyautogui.press("right")
+   #     pyautogui.press('backspace')
         s(PL.QTY_FIELD).should(be.clickable).set(4)
         s(PL.UPDATE).click()
         time.sleep(2)
