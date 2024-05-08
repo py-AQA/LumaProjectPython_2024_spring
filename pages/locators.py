@@ -103,3 +103,4 @@ class PerformanceSportswear:
     SUCCESS_MESSAGE = '#maincontent > div.page.messages > div:nth-child(2) > div > div > div'
     TEXT_SUCCESS_MESSAGE = 'You added Helios Endurance Tank to your shopping cart'
     IMAGE_2 = '#maincontent ol > li:nth-child(2) .product-image-container'
+    ITEM_2_IN_GENERAL = 'li.product-item:nth-child(2)'
