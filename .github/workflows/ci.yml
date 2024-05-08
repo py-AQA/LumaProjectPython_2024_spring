@@ -53,6 +53,7 @@ jobs:
         continue-on-error: true
       - run: cp pages_history/history/* allure-results && cp -r pages_history/history allure-results
         continue-on-error: true
+        
       - name: Store allure history
         uses: actions/upload-artifact@v3
         with:
