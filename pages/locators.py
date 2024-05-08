@@ -38,6 +38,10 @@ class ProductLocators:
     CART_SUBTOTAL = '.subtotal .price'
     QTY_FIELD = ".details-qty input"
     UPDATE = '[title="Update"]'
+    SIZE_XS = '#option-label-size-143-item-166'
+    COLOR_BLUE = '#option-label-color-93-item-50'
+    SHOULD_CHOOSE_SIZE_AND_COLOR = '.swatch-input super-attribute-select'
+    TEXT_REQUIRED_FIELD = 'This is a required field.'
 
 class HomeLocators:
     STORE_LOGO = 'a.logo'
@@ -95,3 +99,7 @@ class LoginLocators:
 
 class PerformanceSportswear:
     LINK_SPORT = "https://magento.softwaretestingboard.com/collections/performance-new.html"
+    BUTTON_ADD_ITEM2 = '#maincontent li:nth-child(2) button'
+    SUCCESS_MESSAGE = '#maincontent > div.page.messages > div:nth-child(2) > div > div > div'
+    TEXT_SUCCESS_MESSAGE = 'You added Helios Endurance Tank to your shopping cart'
+    IMAGE_2 = '#maincontent ol > li:nth-child(2) .product-image-container'

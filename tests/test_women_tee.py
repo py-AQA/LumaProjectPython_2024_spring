@@ -61,7 +61,7 @@ def test_011_016_002_check_links_in_breadcrumps():
 @pytest.mark.xfail
 def test_011_016_002_breadcrumbs_redirection_from_women_tees_new4():
     browser.open(SalePageLocators.LINK_TEES_WOMEN)
-    elements = ss(BaseLocators.BREADCRUMBS_LINKS).filtered_by(have.attribute('href'))
+    elements = ss(BaseLocators.BREADCRUMBS_LINKS).by(have.attribute('href'))
 
     expected_links = ['https://magento.softwaretestingboard.com/',
                       'https://magento.softwaretestingboard.com/women.html',
@@ -73,14 +73,14 @@ def test_011_016_002_breadcrumbs_redirection_from_women_tees_new4():
 
 def test_011_016_002_breadcrumbs_redirection_from_women_tees_new3():
     browser.open(SalePageLocators.LINK_TEES_WOMEN)
-    ss(BaseLocators.BREADCRUMBS_LINKS).filtered_by(have.attribute('href')).should(
+    ss(BaseLocators.BREADCRUMBS_LINKS).by(have.attribute('href')).should(
         have.texts('Home', 'Women', 'Tops'))
 
 
 def test_011_016_002_breadcrumbs_redirection_from_women_tees_new321():
     browser.open(SalePageLocators.LINK_TEES_WOMEN)
 
-    elements = ss('.breadcrumbs > ul  > li > a').filtered_by(have.attribute('href'))
+    elements = ss('.breadcrumbs > ul  > li > a').by(have.attribute('href'))
     expected_links = ['https://magento.softwaretestingboard.com/',
                       'https://magento.softwaretestingboard.com/women.html',
                       'https://magento.softwaretestingboard.com/women/tops-women.html']
