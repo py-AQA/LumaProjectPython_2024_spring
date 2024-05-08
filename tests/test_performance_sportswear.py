@@ -3,7 +3,7 @@ from selene.support.conditions.have import values_containing, values
 from selenium.webdriver.common.by import By
 
 from pages.locators import PerformanceSportswear, BaseLocators, LoginLocators, ProductLocators
-from selene import browser, be, have, query
+from selene import browser, be, have, query, command
 from selene.support.shared.jquery_style import s, ss
 from selene.support.conditions import be, have
 
@@ -32,7 +32,7 @@ def test_006_008_002_add_to_cart_from_catalog_without_color_and_size():
     s(LoginLocators.FIELD_PASSWORD).type("jk$34_tor")
     s(LoginLocators.BUTTON_SUBMIT).click()
     browser.open(PerformanceSportswear.LINK_SPORT)
-    s(PerformanceSportswear.BUTTON_ADD_ITEM2).click()
+    s(PerformanceSportswear.BUTTON_ADD_ITEM2).perform(command.js.scroll_into_view).hover().should(be.clickable).click()
     s(PerformanceSportswear.SUCCESS_MESSAGE).should(have.no.text(PerformanceSportswear.TEXT_SUCCESS_MESSAGE))
 
 

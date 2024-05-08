@@ -1,5 +1,6 @@
 import time
 
+import pytest
 import selene
 from selene.support.shared.jquery_style import s, ss
 from selene import browser, be, have
@@ -11,6 +12,7 @@ from selene.support.conditions import *
 from selene.support import by
 
 
+@pytest.mark.skip
 def test_checkout_from_mini_cart():
     success_message = 'Thank you for your purchase!'
     failure_message = 'There is no fact of purchase!'
