@@ -27,9 +27,21 @@ class ProductLocators:
     ARGUS_All_WEATHER_TANK_SIZE = '//*[@title="Argus All-Weather Tank"]/../..//*[@option-label="M"]'
     ARGUS_All_WEATHER_TANK_COLOR = '//*[@title="Argus All-Weather Tank"]/../..//*[@option-label="Gray"]'
     ARGUS_All_WEATHER_TANK_ADD_TO_CARD = '//*[@title="Argus All-Weather Tank"]/../..//*[@title="Add to Cart"]'
-    MINI_BASKET_WINDOW = '[class="action showcart"]'
+    MINI_BASKET_WINDOW = '.action.showcart'
     VIEW_AND_EDIT_CART_LINK = "//*[text()='View and Edit Cart']"
     VIEW_AND_EDIT_CART_HREF = "[class='action viewcart']"
+    SEE_DETAILS = '[data-role="title"]'
+    SIZE_M = '//*[@class="product options list"]//*[text()="M"]'
+    COLOR_GRAY = '//*[@class="product options list"]//*[text()="Gray"]'
+    NAME_ITEM = '//*[text()="Argus All-Weather Tank"]'
+    PRICE_ITEM = '//*[@class="minicart-price"]//*[@class="price"]'
+    CART_SUBTOTAL = '.subtotal .price'
+    QTY_FIELD = ".details-qty input"
+    UPDATE = '[title="Update"]'
+    SIZE_XS = '#option-label-size-143-item-166'
+    COLOR_BLUE = '#option-label-color-93-item-50'
+    SHOULD_CHOOSE_SIZE_AND_COLOR = '.swatch-input super-attribute-select'
+    TEXT_REQUIRED_FIELD = 'This is a required field.'
 
 
 class HomeLocators:
@@ -88,3 +100,7 @@ class LoginLocators:
 
 class PerformanceSportswear:
     LINK_SPORT = "https://magento.softwaretestingboard.com/collections/performance-new.html"
+    BUTTON_ADD_ITEM2 = '#maincontent li:nth-child(2) button'
+    SUCCESS_MESSAGE = '#maincontent > div.page.messages > div:nth-child(2) > div > div > div'
+    TEXT_SUCCESS_MESSAGE = 'You added Helios Endurance Tank to your shopping cart'
+    IMAGE_2 = '#maincontent ol > li:nth-child(2) .product-image-container'
