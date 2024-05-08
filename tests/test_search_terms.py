@@ -75,7 +75,6 @@ def test_015_001_005_check_if_specified_words_is_bigger_than_88(driver):
     driver.get(ST.LINK_SEARCH_TERMS)
     list_of_goods = []
     list_font_sizes = []
-    print()
     terms = driver.find_elements(By.CSS_SELECTOR, ST.LIST_OF_SEARCH_TERMS)
     for g in terms:
         if g.text in words:
@@ -84,8 +83,8 @@ def test_015_001_005_check_if_specified_words_is_bigger_than_88(driver):
             g_size = g_size.replace("%;", "")
             g_size = float(g_size)
             list_font_sizes.append(g_size)
-    print(list_of_goods)
-    print(list_font_sizes)
+    # print(list_of_goods)
+    # print(list_font_sizes)
     assert set(list_of_goods) == set(words) and all(
         [size > 88 for size in list_font_sizes]), "Selected words have font size bigger thjan 88%"
 
@@ -95,7 +94,6 @@ def test_015_001_005_check_if_specified_words_is_bigger_than_88_selenium(driver)
     driver.get(ST.LINK_SEARCH_TERMS)
     list_of_goods = []
     list_font_sizes = []
-    print()
     terms = driver.find_elements(By.CSS_SELECTOR, ST.LIST_OF_SEARCH_TERMS)
     for g in terms:
         if g.text in words:
@@ -104,8 +102,8 @@ def test_015_001_005_check_if_specified_words_is_bigger_than_88_selenium(driver)
             g_size = g_size.replace("%;", "")
             g_size = float(g_size)
             list_font_sizes.append(g_size)
-    print(list_of_goods)
-    print(list_font_sizes)
+    # print(list_of_goods)
+    # print(list_font_sizes)
     assert set(list_of_goods) == set(words) and all(
         [size > 88 for size in list_font_sizes]), "Selected words have font size bigger thjan 88%"
 
@@ -122,9 +120,9 @@ def test_015_001_006_check_if_search_terms_are_sorted():
         keyword = keyword.get(query.attribute("text")).strip().replace(" ","").lower()
         list_of_goods0.append(keyword.lower())
         list_of_goods.append(keyword)
-    print(list_of_goods0)
-    print(list_of_goods)
-    print(sorted(list_of_goods))
+    # print(list_of_goods0)
+    # print(list_of_goods)
+    # print(sorted(list_of_goods))
     list_of_goods_sorted = sorted(list_of_goods)
     assert list_of_goods0 == list_of_goods_sorted
 
