@@ -111,22 +111,29 @@ def test_015_001_005_check_if_specified_words_is_bigger_than_88_selenium(driver)
 
 
 def test_015_001_006_check_if_search_terms_are_sorted():
+    # список ключевых,вытаскиваемых с помощью selene, выглядит не так, как при selenium.
+    # Теперь есть лишние пробелы, перевод строки, слова с малой буквы неправильно сортируются.
+    # С selenium тест = ОК
     browser.open(ST.LINK_SEARCH_TERMS)
+    list_of_goods = []  # good : strip, lower, no spaces
+    list_of_goods0 = []  # words from terms applied lower()
+    terms = ss(ST.LIST_OF_SEARCH_TERMS)
+    for keyword in terms:
+        keyword = keyword.get(query.attribute("text")).strip().replace(" ","").lower()
+        list_of_goods0.append(keyword.lower())
+        list_of_goods.append(keyword)
+    print(list_of_goods0)
+    print(list_of_goods)
+    print(sorted(list_of_goods))
+    list_of_goods_sorted = sorted(list_of_goods)
+    assert list_of_goods0 == list_of_goods_sorted
 
-    list_of_goods = []
-    terms = ss(ST.LIST_OF_SEARCH_TERMS).get()
-    for g in terms:
-        list_of_goods.append(g.text)
-    sorted_list = sorted(list_of_goods)
-    assert list_of_goods == sorted_list, "Goods are not sorted from A to Z"
 
-
-# def test_015_001_006_selenium(driver):
+# def test_015_001_006_check_if_search_terms_are_sorted_selenium(driver):
 #     driver.get(ST.LINK_SEARCH_TERMS)
 #     list_of_goods = []
 #     terms = ss(ST.LIST_OF_SEARCH_TERMS)
 #     for g in terms:
 #         list_of_goods.append(g.text)
-#     sorted_list = sorted(list_of_goods)
 #     sorted_list = sorted(list_of_goods)
 #     assert list_of_goods == sorted_list, "Goods are not sorted from A to Z"
