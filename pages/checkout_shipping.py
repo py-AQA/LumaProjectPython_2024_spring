@@ -1,3 +1,4 @@
+import pytest
 from selene import browser, be, have
 from selene.support.shared.jquery_style import s, ss
 
@@ -35,11 +36,11 @@ def fill_shipping_address_class():
     s('[name="country_id"]').click()
     s('[value="AI"]').click()
     s('[name="telephone"]').type(person1.phone_number)
-    s('#checkout-shipping-method-load input').click()
-    s('.continue').click()
+    s('#checkout-shipping-method-load input').should(be.clickable).click()
+    s('.continue').should(be.clickable).click()
     s('.primary.checkout').should(be.visible)
     s('#billing-address-same-as-shipping-checkmo').click()
-    s('.primary.checkout').click()
+    s('.primary.checkout').should(be.clickable).click()
 
     # Находим выпадающий список по селектору
     # select_element = browser.s('[name="region_id"]')

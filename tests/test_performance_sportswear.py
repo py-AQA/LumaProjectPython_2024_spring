@@ -1,3 +1,5 @@
+import time
+
 import pytest
 from selene.support.conditions.have import values_containing, values
 from selenium.webdriver.common.by import By
@@ -34,6 +36,17 @@ def test_006_008_002_add_to_cart_from_catalog_without_color_and_size():
     browser.open(PerformanceSportswear.LINK_SPORT)
     # кликнуть невидимую кнопку - она за пределами экрана и/или не отрисована
     s(PerformanceSportswear.BUTTON_ADD_ITEM2).perform(command.js.click)
+    s(PerformanceSportswear.SUCCESS_MESSAGE).should(have.no.text(PerformanceSportswear.TEXT_SUCCESS_MESSAGE))
+
+def test_006_008_002_add_to_cart_from_catalog_without_color_and_size_with_hover():
+    browser.open(LoginLocators.LINK_LOGIN)
+    s(LoginLocators.FIELD_NAME).type("ahahah1@gmail.com")
+    s(LoginLocators.FIELD_PASSWORD).type("jk$34_tor")
+    s(LoginLocators.BUTTON_SUBMIT).click()
+    browser.open(PerformanceSportswear.LINK_SPORT)
+    # s(PerformanceSportswear.IMAGE_2).should(be.visible).perform(command.js.scroll_into_view)
+    s(PerformanceSportswear.IMAGE_2).should(be.visible).hover()
+    s(PerformanceSportswear.BUTTON_ADD_ITEM2).should(be.clickable).click()
     s(PerformanceSportswear.SUCCESS_MESSAGE).should(have.no.text(PerformanceSportswear.TEXT_SUCCESS_MESSAGE))
 
 

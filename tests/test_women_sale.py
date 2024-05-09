@@ -15,7 +15,7 @@ from selene.support.shared.jquery_style import s, ss
 #         actual_list_breadcrumbs.append(elem.text)
 #     assert expected_list_breadcrumbs == actual_list_breadcrumbs
 
-@pytest.mark.xfail
+@pytest.mark.skip
 def test_011_011_001_women_sale_breadcrumbs_is_correct():
     # assert error !!! 'Sale' is missing
     browser.open(SalePageLocators.LINK_WOMEN_SALE)
@@ -31,7 +31,6 @@ def test_011_011_001_women_sale_breadcrumbs_is_correct():
 #         assert driver.current_url in SalePageLocators.BREADCRUMBS_LINKS_ON_PAGE_WOMEN_SALE
 #
 
-@pytest.mark.xfail
 def test_011_011_002_breadcrumbs_redirection_from_women_sale():
     browser.open(SalePageLocators.LINK_WOMEN_SALE)
     elements = ss(BaseLocators.BREADCRUMBS_LINKS).by(have.attribute('href'))

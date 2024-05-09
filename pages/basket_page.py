@@ -12,9 +12,9 @@ from selenium.webdriver.support.color import Color
 
 class BasketPage(BasePage):
     def add_to_cart_from_main_page(self):
-        s(PL.ARGUS_All_WEATHER_TANK_SIZE).click()
-        s(PL.ARGUS_All_WEATHER_TANK_COLOR).click()
-        s(PL.ARGUS_All_WEATHER_TANK_ADD_TO_CARD).click()
+        s(PL.ARGUS_All_WEATHER_TANK_SIZE).should(be.clickable).click()
+        s(PL.ARGUS_All_WEATHER_TANK_COLOR).should(be.clickable).click()
+        s(PL.ARGUS_All_WEATHER_TANK_ADD_TO_CARD).should(be.clickable).click()
 
     def check_color_and_clickability_of_view_and_edit_cart_link_in_the_mini_cart(self):
         # добавляем функцию add_to_cart_from_main_page()
@@ -23,7 +23,7 @@ class BasketPage(BasePage):
         s(PL.MINI_BASKET_WINDOW).click()
         edit = s(PL.VIEW_AND_EDIT_CART_HREF)
         edit.should(have.attribute("href"))
-        s('a.action').should(have.css_property("color", Color.from_string("#006bb4").rgba))
+        s('a.action').should(have.css_property("color").value(Color.from_string("#006bb4").rgba))
         # color = browser.element(PL.VIEW_AND_EDIT_CART_HREF).value_of_css_property("color")
         # color = browser.element(PL.VIEW_AND_EDIT_CART_HREF).should(have(css_property("color")))
 
@@ -50,20 +50,20 @@ class BasketPage(BasePage):
         self.add_to_cart_from_main_page()
         time.sleep(1)
         s(PL.MINI_BASKET_WINDOW).should(be.clickable).click()
-        s(PL.VIEW_AND_EDIT_CART_LINK).click()
+        s(PL.VIEW_AND_EDIT_CART_LINK).should(be.clickable).click()
 
     def checking_the_size_color_and_product_name_are_correct(self):
         self.add_to_cart_from_main_page()
         time.sleep(1)
         s(PL.MINI_BASKET_WINDOW).should(be.clickable).click()
-        s(PL.SEE_DETAILS).click()
+        s(PL.SEE_DETAILS).should(be.clickable).click()
         s(PL.SIZE_M).should(have.text("M"))
         s(PL.COLOR_GRAY).should(have.text("Gray"))
         s(PL.NAME_ITEM).should(have.text("Argus All-Weather Tank"))
 
     def checking_present_price_item_and_cart_subtotal_in_the_mini_cart(self):
         self.add_to_cart_from_main_page()
-        time.sleep(1)
+        time.sleep(2)
         s(PL.MINI_BASKET_WINDOW).should(be.clickable).click()
         s(PL.PRICE_ITEM).should(have.text("$22.00"))
         s(PL.CART_SUBTOTAL).should(have.text("$22.00"))
@@ -72,10 +72,10 @@ class BasketPage(BasePage):
         self.add_to_cart_from_main_page()
         time.sleep(1)
         s(PL.MINI_BASKET_WINDOW).should(be.clickable).click()
-        s(PL.QTY_FIELD).click()
+        # s(PL.QTY_FIELD).click()
    #     pyautogui.press("right")
    #     pyautogui.press('backspace')
-        s(PL.QTY_FIELD).should(be.clickable).set(4)
+        s(PL.QTY_FIELD).should(be.clickable).clear().type(4)
         s(PL.UPDATE).click()
         time.sleep(2)
-        browser.quit()
+        # browser.quit()

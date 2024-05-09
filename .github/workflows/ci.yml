@@ -84,7 +84,7 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest
+          pytest -n2
         env:
           CI_RUN: true
           PYTHONDONTWRITEBYTECODE: 1
