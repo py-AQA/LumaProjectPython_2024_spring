@@ -39,6 +39,11 @@ class ProductLocators:
     QTY_FIELD = ".details-qty input"
     UPDATE = '[title="Update"]'
 
+    NAME_ARGUS_ALL_WEATHER_TANK_CHECKOUT_CART = '//*[@id="shopping-cart-table"] //*[text()="Argus All-Weather Tank"]'
+    SIZE_M_ARGUS_ALL_WEATHER_TANK_CHECKOUT_CART = '// *[contains(text(), "M")]/../..// *[ @ id = "shopping-cart-table"]'
+    COLOR_GRAY_ARGUS_CHECKOUT_CART = '//*[@id="shopping-cart-table"]//*[contains(text(),"Gray")]'
+
+
 class HomeLocators:
     STORE_LOGO = 'a.logo'
 
