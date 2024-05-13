@@ -5,7 +5,7 @@ from selene import browser, be, have
 # from selene.support.conditions.have import css_property
 # from selene.core.query import css_property
 from selene.support.shared.jquery_style import s, ss
-from selenium.webdriver import Keys
+# from selenium.webdriver import Keys
 from pages.locators import ProductLocators as PL
 from selenium.webdriver.support.color import Color
 
@@ -45,10 +45,27 @@ def check_color_button():
     # login_button_background_colour = Color.from_string(driver.find_element(By.ID, 'login').value_of_css_property('background-color'))
 
 
-
 @allure.link("https://trello.com/c/lvLslLGD")
-def checking_size_color_and_product_name_are_correct_in_checkout_cart_page():
-    s(PL.VIEW_AND_EDIT_CART_LINK).click()
+def checking_product_name_are_correct_in_checkout_cart_page():
     s(PL.NAME_ARGUS_ALL_WEATHER_TANK_CHECKOUT_CART).should(have.text("Argus All-Weather Tank"))
-    s(PL.COLOR_GRAY_ARGUS_CHECKOUT_CART).should(have.text("Gray"))
+
+
+def checking_size_are_correct_in_checkout_cart_page():
     s(PL.SIZE_M_ARGUS_ALL_WEATHER_TANK_CHECKOUT_CART).should(have.text("M"))
+
+
+def checking_color_are_correct_in_checkout_cart_page():
+    s(PL.COLOR_GRAY_ARGUS_CHECKOUT_CART).should(have.text("Gray"))
+
+
+@allure.link("https://trello.com/c/SQ3op4DX")
+def check_price_present_in_checkout_cart_page():
+    s(PL.PRICE_ITEM_CHECKOUT_CART).should(be.present).should(have.text("$22.00"))
+
+
+def check_qty_present_in_checkout_cart_page():
+    s(PL.QTY_FIELD_CHECKOUT_CART).should(be.present)
+
+
+def check_subtotal_present_in_checkout_cart_page():
+    s(PL.CART_SUBTOTAL_CHECKOUT_CART).should(be.present).should(have.text("$"))
