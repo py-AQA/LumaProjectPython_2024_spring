@@ -1,5 +1,5 @@
 from selene.support.shared.jquery_style import s, ss
-from selene import  be
+from selene import be
 from pages.base_page import BasePage
 # from pages.basket_page import BasketPage
 from pages.locators import NavigatorLocators as NL, ProductLocators as PL
@@ -26,3 +26,6 @@ class HomePage(BasePage):
 
     def go_to_mini_cart(self):
         s(PL.MINI_BASKET_WINDOW).should(be.clickable).click()
+
+    def go_to_checkout_cart(self):
+        s(PL.VIEW_AND_EDIT_CART_LINK).click()
