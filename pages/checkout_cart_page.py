@@ -46,26 +46,27 @@ def check_color_button():
 
 
 @allure.link("https://trello.com/c/lvLslLGD")
-def checking_product_name_are_correct_in_checkout_cart_page():
-    s(PL.NAME_ARGUS_ALL_WEATHER_TANK_CHECKOUT_CART).should(have.text("Argus All-Weather Tank"))
+def checking_product_name_are_correct_in_checkout_cart_page(item_name):
+    s(PL.NAME_ARGUS_ALL_WEATHER_TANK_CHECKOUT_CART).should(have.text(item_name))
 
 
-def checking_size_are_correct_in_checkout_cart_page():
-    s(PL.SIZE_M_ARGUS_ALL_WEATHER_TANK_CHECKOUT_CART).should(have.text("M"))
+def checking_size_are_correct_in_checkout_cart_page(size):
+    s(PL.SIZE_M_ARGUS_ALL_WEATHER_TANK_CHECKOUT_CART).should(have.text(size))
 
 
-def checking_color_are_correct_in_checkout_cart_page():
-    s(PL.COLOR_GRAY_ARGUS_CHECKOUT_CART).should(have.text("Gray"))
+def checking_color_are_correct_in_checkout_cart_page(color):
+    s(PL.COLOR_GRAY_ARGUS_CHECKOUT_CART).should(have.text(color))
 
 
 @allure.link("https://trello.com/c/SQ3op4DX")
-def check_price_present_in_checkout_cart_page():
-    s(PL.PRICE_ITEM_CHECKOUT_CART).should(be.present).should(have.text("$22.00"))
+def check_price_present_in_checkout_cart_page(item_price):
+    s(PL.PRICE_ITEM_CHECKOUT_CART).should(be.present).should(have.text(item_price))
 
 
 def check_qty_present_in_checkout_cart_page():
     s(PL.QTY_FIELD_CHECKOUT_CART).should(be.present)
 
 
-def check_subtotal_present_in_checkout_cart_page():
-    s(PL.CART_SUBTOTAL_CHECKOUT_CART).should(be.present).should(have.text("$"))
+def check_subtotal_present_in_checkout_cart_page(subtotal):
+    s(PL.CART_SUBTOTAL_CHECKOUT_CART).should(be.present).should(have.text(subtotal))
+

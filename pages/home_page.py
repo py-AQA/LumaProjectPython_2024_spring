@@ -1,9 +1,8 @@
-from selene.support.shared.jquery_style import s, ss
 from selene import be
+from selene.support.shared.jquery_style import s
+
 from pages.base_page import BasePage
-# from pages.basket_page import BasketPage
 from pages.locators import NavigatorLocators as NL, ProductLocators as PL
-from pages.urls import main_page_link
 
 
 class HomePage(BasePage):
@@ -29,3 +28,9 @@ class HomePage(BasePage):
 
     def go_to_checkout_cart(self):
         s(PL.VIEW_AND_EDIT_CART_LINK).click()
+
+    def find_counter_number(self):
+        return s(PL.MINICART_COUNTER)
+
+    def is_counter_number_visible(self):
+        return self.find_counter_number().should(be.visible)
