@@ -49,7 +49,7 @@ class ProductLocators:
     PRICE_ITEM_CHECKOUT_CART = '//*[@class="col price"] //*[text()="$22.00"]'
     CART_SUBTOTAL_CHECKOUT_CART = '//*[@class="col subtotal"] //*[text()="$22.00"]'
     QTY_FIELD_CHECKOUT_CART = '[class="field qty"] input'
-
+    MINICART_COUNTER = '.counter-label'
 
 class HomeLocators:
     STORE_LOGO = 'a.logo'

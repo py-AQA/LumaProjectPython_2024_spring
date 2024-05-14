@@ -1,17 +1,16 @@
 import time
+
 import allure
 import pytest
-import selene
-from selene.support.shared.jquery_style import s, ss
 from selene import browser, be, have
+from selene.support.shared.jquery_style import s
+
 from pages import mini_cart, checkout_shipping, checkout_cart_page
+from pages.home_page import HomePage
 from pages.locators import ProductLocators as PL
 from pages.product_page import ProductPage
-from pages.user import Person
-from selene.support.conditions import *
-from selene.support import by
 from pages.urls import *
-from pages.home_page import HomePage
+
 
 @pytest.mark.skip
 def test_checkout_from_mini_cart():
@@ -41,21 +40,21 @@ def test_size_color_and_product_name_are_correct_in_the_checkout_cart_page_tc_00
     page = HomePage(browser, main_page_link)
     page.open()
     page.add_to_cart_from_main_page()
-    time.sleep(2)
+    page.is_counter_number_visible()
     page.go_to_mini_cart()
     page.go_to_checkout_cart()
-    checkout_cart_page.checking_product_name_are_correct_in_checkout_cart_page()
-    checkout_cart_page.checking_size_are_correct_in_checkout_cart_page()
-    checkout_cart_page.checking_color_are_correct_in_checkout_cart_page()
+    checkout_cart_page.checking_product_name_are_correct_in_checkout_cart_page("Argus All-Weather Tank")
+    checkout_cart_page.checking_size_are_correct_in_checkout_cart_page("M")
+    checkout_cart_page.checking_color_are_correct_in_checkout_cart_page("Gray")
 
 @allure.link("https://trello.com/c/SQ3op4DX")
 def test_check_price_qty_and_cart_subtotal_present_in_checkout_cart_page_tc_005_001_017():
     page = HomePage(browser, main_page_link)
     page.open()
     page.add_to_cart_from_main_page()
-    time.sleep(2)
+    page.is_counter_number_visible()
     page.go_to_mini_cart()
     page.go_to_checkout_cart()
-    checkout_cart_page.check_price_present_in_checkout_cart_page()
-    checkout_cart_page.check_subtotal_present_in_checkout_cart_page()
+    checkout_cart_page.check_price_present_in_checkout_cart_page("$22.00")
+    checkout_cart_page.check_subtotal_present_in_checkout_cart_page("$22.00")
     checkout_cart_page.check_qty_present_in_checkout_cart_page()
