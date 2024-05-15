@@ -1,6 +1,7 @@
 from selene import browser, be, have
 from selene.support.shared.jquery_style import s, ss
 from pages.locators import SalePageLocators, BaseLocators
+from pages.urls import *
 import allure
 
 
@@ -63,7 +64,7 @@ def test_fitness_link_correct_redirection():
 
 
 def test_011_001_001_sale_breadcrumbs_is_correct():
-    browser.open(SalePageLocators.LINK_SALE)
+    browser.open(LINK_SALE)
     ss(BaseLocators.BREADCRUMBS_LIST).should(have.texts('Home', 'Sale'))
 
 
