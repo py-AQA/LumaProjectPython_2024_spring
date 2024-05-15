@@ -6,5 +6,5 @@ LINK_SEARCH_TERMS = "https://magento.softwaretestingboard.com/search/term/popula
 LINK_SALE = "https://magento.softwaretestingboard.com/sale.html"
 LINK_WOMEN_SALE = "https://magento.softwaretestingboard.com/promotions/women-sale.html"
 LINK_TEES_WOMEN = "https://magento.softwaretestingboard.com/women/tops-women/tees-women.html"
-
+checkout_cart = "https://magento.softwaretestingboard.com/checkout/cart/"
 
