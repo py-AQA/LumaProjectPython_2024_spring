@@ -44,12 +44,26 @@ class ProductLocators:
     TEXT_REQUIRED_FIELD = 'This is a required field.'
 
     NAME_ARGUS_ALL_WEATHER_TANK_CHECKOUT_CART = '//*[@id="shopping-cart-table"] //*[text()="Argus All-Weather Tank"]'
-    SIZE_M_ARGUS_ALL_WEATHER_TANK_CHECKOUT_CART = '// *[contains(text(), "M")]/../..// *[ @ id = "shopping-cart-table"]'
+    SIZE_M_ARGUS_ALL_WEATHER_TANK_CHECKOUT_CART = '//*[contains(text(),"M")]/../..//*[@id="shopping-cart-table"]'
     COLOR_GRAY_ARGUS_CHECKOUT_CART = '//*[@id="shopping-cart-table"]//*[contains(text(),"Gray")]'
     PRICE_ITEM_CHECKOUT_CART = '//*[@class="col price"] //*[text()="$22.00"]'
     CART_SUBTOTAL_CHECKOUT_CART = '//*[@class="col subtotal"] //*[text()="$22.00"]'
     QTY_FIELD_CHECKOUT_CART = '[class="field qty"] input'
     MINICART_COUNTER = '.counter-label'
+
+
+class ShoppingCart:
+    ESTIMATE_SHIPPING = '//*[@id="block-shipping"]//*[@class="title"]'
+    COUNTRY_SELECT_DROP = '//*[@class="field"]//*[@name="country_id"]'
+    # COUNTRY_SELECT_DROP = '//*[@class="select"]'
+    # SELECT_COUNTRY = '//*[@class="field"]//*[@name="country_id"]'
+    STATE_REGION_SELECT = '//*[@class="field"]//*[@name="region_id"]'
+
+    FLAT_RATE = '[data-bind="text: $data"]'
+    SUBTOTAL_VAlUE = '[class="price"][data-th="Subtotal"]'
+    ORDER_TOTAL_VALUE = '[data-bind="text: getValue()"]'
+    PROCESEED_TO_CHECKOUT_BUTTON = '[data-role="proceed-to-checkout"]'
+
 
 class HomeLocators:
     STORE_LOGO = 'a.logo'
